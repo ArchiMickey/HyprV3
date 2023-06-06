@@ -1,0 +1,11 @@
+#!/bin/bash
+x=$(hyprctl -j monitors | jq '.[0].x')
+echo $x
+if [ $x -ne 3172 ]
+then
+    echo "Hi"
+    hyprctl keyword monitor DP-2, 3840x2160@144, 3172x0, 1.25
+else
+    echo "Bye"
+    hyprctl keyword monitor DP-2, 3840x2160@144, 3072x0, 1.25
+fi

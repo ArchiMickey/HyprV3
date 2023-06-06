@@ -47,7 +47,12 @@ switch_version() {
         ;;
 
         v3)
-            #we are on v3 so switch to v1
+            #we are on v3 so switch to archimickey
+            VERTO="archimickey-"
+            notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to Archimickey"
+        ;;
+        archimickey)
+            #we are on archimickey so switch to v1
             VERTO="v1-"
             notify-send -h string:x-canonical-private-synchronous:sys-notify -u low "switching to HyprV1"
         ;;
@@ -81,13 +86,13 @@ fi
 get_ver
 
 TOOLTIP='Default Keybinds\n'\
-'SUPER + Q = Start Kitty\n'\
-'SUPER + F4 = Close Window\n'\
+'SUPER + Q = Close Window\n'\
 'SUPER + L = Lock Screen\n'\
-'SUPER + M = Logout menu\n'\
+'SUPER + Esc = Logout menu\n'\
 'SUPER + E = File Manager\n'\
-'SUPER + V = Toggle Float\n'\
-'SUPER + SPACE = App Launcher\n'\
+'SUPER + M = Fullscreen\n'\
+'SUPER + V + Toggle Float\n'\
+'CTRL + SPACE = App Launcher\n'\
 'SUPER + S = Screenshot'
 
 echo '{"text": "'$VER'", "tooltip": "'$TOOLTIP'"}'

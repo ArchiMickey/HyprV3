@@ -14,6 +14,10 @@ case $HYPRVER in
     v3)
         VER="v3-"
         ;;
+    
+    archimickey)
+        VER="archimickey-"
+        ;;
 
 esac
 
