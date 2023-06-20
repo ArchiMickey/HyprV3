@@ -72,7 +72,7 @@ local plugins = {
       post_set_venv = function()
         vim.cmd("LspRestart")
       end
-    }
+    },
   },
   {
     "stevearc/dressing.nvim",
@@ -96,6 +96,10 @@ local plugins = {
             "nvim-lua/plenary.nvim",
         },
         cmd = "LazyGit"
-    }
+    },
+    {
+        "christoomey/vim-tmux-navigator",
+        lazy = false,
+    },
 }
 return plugins
