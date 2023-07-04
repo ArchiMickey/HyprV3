@@ -76,19 +76,7 @@ local plugins = {
   },
   {
     "stevearc/dressing.nvim",
-    lazy = true,
-    init = function()
-        ---@diagnostic disable-next-line: duplicate-set-field
-        vim.ui.select = function(...)
-          require("lazy").load { plugins = { "dressing.nvim" } }
-          return vim.ui.select(...)
-        end
-        ---@diagnostic disable-next-line: duplicate-set-field
-        vim.ui.input = function(...)
-          require("lazy").load { plugins = { "dressing.nvim" } }
-          return vim.ui.input(...)
-        end
-      end,
+    event = "VeryLazy" 
   },
     {
         "kdheepak/lazygit.nvim",
@@ -101,5 +89,39 @@ local plugins = {
         "christoomey/vim-tmux-navigator",
         lazy = false,
     },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        opts = {
+            suggestion = {auto_trigger = true},
+        }
+    },
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        opts = {
+        -- configurations go here
+        },
+        cmd = "Barbecue",
+        lazy = false,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        init = function ()
+            require("indent_blankline").setup {
+                show_current_context = true,
+            }
+        end
+    },
+    {
+        "RRethy/vim-illuminate",
+        lazy = false
+    }
 }
 return plugins

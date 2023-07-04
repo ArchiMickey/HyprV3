@@ -6,9 +6,9 @@ local capabilities = config.capabilities
 local lspconfig = require("lspconfig")
 
 lspconfig.pyright.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
     pyright = {
       autoImportCompletion = true,
     },
@@ -20,6 +20,6 @@ lspconfig.pyright.setup({
         typeCheckingMode = 'off'
       }
     }
-  },
-  filetypes = {"python"},
+    },
+    filetypes = {"python"},
 })
