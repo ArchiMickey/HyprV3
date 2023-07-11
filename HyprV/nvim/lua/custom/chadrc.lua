@@ -17,7 +17,7 @@
       if current_venv ~= nil
         then name = string.format(" %s ", current_venv.name)
       else
-        name = "  "
+        name = " base "
       end
 
       return {
