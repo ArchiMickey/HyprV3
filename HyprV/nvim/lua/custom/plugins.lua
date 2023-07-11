@@ -122,6 +122,10 @@ local plugins = {
     {
         "RRethy/vim-illuminate",
         lazy = false
+    },
+    {
+        "sindrets/diffview.nvim",
+        lazy = false
     }
 }
 return plugins
