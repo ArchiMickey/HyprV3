@@ -267,7 +267,7 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita-dark"
     gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Macchiato-Standard-Lavender-dark"
     gsettings set org.gnome.desktop.interface icon-theme "Adwaita-dark"
-    cp -f ~/.config/HyprV/backgrounds/v3-background-dark.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
+    cp -f ~/.config/HyprV/backgrounds/archimickey-background-dark.png /usr/share/sddm/themes/sdt/wallpaper.jpg
 fi
 
 ### Install software for Asus ROG laptops ###
