@@ -1,0 +1,5 @@
+sleep 5
+hyprctl keyword windowrule "workspace unset,kitty"
+hyprctl keyword windowrule "workspace unset,firefox"
+hyprctl keyword windowrulev2 "workspace unset, class:^(kitty)$,title:^(tmux)$"
+
