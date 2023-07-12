@@ -179,7 +179,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     # Stage 1 - main components
     echo -e "$CNT - Stage 1 - Installing main components, this may take a while..."
-    for SOFTWR in hyprland kitty waybar jq mako swww swaylock-effects wofi wlogout xdg-desktop-portal-hyprland swappy grim slurp thunar
+    for SOFTWR in hyprland kitty waybar-hyprland-git jq mako hyprpaper swaylock-effects wofi wlogout xdg-desktop-portal-hyprland swappy grim slurp thunar
     do
            install_software $SOFTWR 
     done
@@ -193,7 +193,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     # Stage 3 - some visual tools
     echo -e "$CNT - Stage 3 - Installing theme and visual related tools and utilities, this may take a while..."
-    for SOFTWR in starship ttf-jetbrains-mono-nerd noto-fonts-emoji lxappearance xfce4-settings sddm qt5-svg qt5-quickcontrols2 qt5-graphicaleffects
+    for SOFTWR in nerd-fonts-meta nerd-fonts-sf-mono noto-fonts-cjk noto-fonts-emoji lxappearance xfce4-settings sddm qt5-svg qt5-quickcontrols2 qt5-graphicaleffects nwg-look-bin catppuccin-cursors-macchiato catppuccin-gtk-theme-macchiato
     do
         install_software $SOFTWR
     done
@@ -242,11 +242,11 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     ln -sf ~/.config/HyprV/kitty/kitty.conf ~/.config/kitty/kitty.conf
     ln -sf ~/.config/HyprV/mako/conf/config-dark ~/.config/mako/config
     ln -sf ~/.config/HyprV/swaylock/config ~/.config/swaylock/config
-    ln -sf ~/.config/HyprV/waybar/conf/v3-config.jsonc ~/.config/waybar/config.jsonc
+    ln -sf ~/.config/HyprV/waybar/conf/archimickey-config.jsonc ~/.config/waybar/config.jsonc
     ln -sf ~/.config/HyprV/waybar/style/v3-style-dark.css ~/.config/waybar/style.css
     ln -sf ~/.config/HyprV/wlogout/layout ~/.config/wlogout/layout
     ln -sf ~/.config/HyprV/wofi/config ~/.config/wofi/config
-    ln -sf ~/.config/HyprV/wofi/style/v3-style-dark.css ~/.config/wofi/style.css
+    ln -sf ~/.config/HyprV/wofi/style/archimickey-style-dark.css ~/.config/wofi/style.css
 
     # Copy the SDDM theme
     echo -e "$CNT - Setting up the login screen."
@@ -262,36 +262,12 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
         sudo mkdir $WLDIR
     fi 
     
-    # stage the .desktop file
-    sudo cp Extras/hyprland.desktop /usr/share/wayland-sessions/
-    
-    if [[ "$ISNVIDIA" == true ]]; then
-        # setup nvidia startup file
-        cp Extras/start-hypr-nvidia ~/.start-hypr-nvidia
-        sudo sed -i 's/Exec=Hyprland/Exec=\/home\/'$USER'\/.start-hypr-nvidia/' /usr/share/wayland-sessions/hyprland.desktop
-    else
-        # setup non nvidia startup file
-        cp Extras/start-hypr-amd ~/.start-hypr-amd
-        sudo sed -i 's/Exec=Hyprland/Exec=\/home\/'$USER'\/.start-hypr-amd/' /usr/share/wayland-sessions/hyprland.desktop
-    fi
-
     # setup the first look and feel as dark
-    xfconf-query -c xsettings -p /Net/ThemeName -s "Adwaita-dark"
+    xfconf-query -c xsettings -p /Net/ThemeName -s "Catppuccin-Macchiato-Standard-Lavender-dark"
     xfconf-query -c xsettings -p /Net/IconThemeName -s "Adwaita-dark"
-    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+    gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Macchiato-Standard-Lavender-dark"
     gsettings set org.gnome.desktop.interface icon-theme "Adwaita-dark"
     cp -f ~/.config/HyprV/backgrounds/v3-background-dark.jpg /usr/share/sddm/themes/sdt/wallpaper.jpg
-fi
-
-### Install the starship shell ###
-read -rep $'[\e[1;33mACTION\e[0m] - Would you like to activate the starship shell? (y,n) ' STAR
-if [[ $STAR == "Y" || $STAR == "y" ]]; then
-    # install the starship shell
-    echo -e "$CNT - Hansen Crusher, Engage!"
-    echo -e "$CNT - Updating .bashrc..."
-    echo -e '\neval "$(starship init bash)"' >> ~/.bashrc
-    echo -e "$CNT - copying starship config file to ~/.confg ..."
-    cp Extras/starship.toml ~/.config/
 fi
 
 ### Install software for Asus ROG laptops ###
