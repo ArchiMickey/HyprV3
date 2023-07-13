@@ -57,7 +57,7 @@
         load_on_startup = true
     },
 
-    transparency = true,
+    transparency = false,
  }
  M.plugins = "custom.plugins"
  M.mappings = require "custom.mappings"
